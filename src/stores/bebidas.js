@@ -1,0 +1,42 @@
+import { defineStore } from "pinia";
+import { onMounted, reactive, ref } from "vue";
+import APIService from "@/services/APIService";
+
+export const useBebidasStore = defineStore('bebidas', () => {
+    //* Data
+    const categorias = ref({});
+    const busqueda = reactive({
+        nombre: '',
+        categoria: ''
+    })
+    const recetas = ref({});
+
+    //* First petition
+    onMounted(async function () {
+        //* Petition
+        const { data: { drinks } } = await APIService.obtenerCategorias();
+
+        //* Set categorias
+        categorias.value = drinks;
+    })
+
+    //* Search recipes
+    async function obtenerRecetas() {
+        const { data: { drinks } } = await APIService.buscarRecetas(busqueda);
+        recetas.value = drinks;
+    }
+
+    //* Show drink
+    async function seleccionarBebida(id) {
+        const { data: { drinks } } = await APIService.buscarReceta(id);
+        console.log(drinks[0]);
+    }
+
+    return {
+        categorias,
+        busqueda,
+        obtenerRecetas,
+        recetas,
+        seleccionarBebida
+    }
+});
