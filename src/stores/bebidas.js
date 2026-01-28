@@ -1,15 +1,18 @@
 import { defineStore } from "pinia";
 import { onMounted, reactive, ref } from "vue";
 import APIService from "@/services/APIService";
+import { useModalStore } from "./modal";
 
 export const useBebidasStore = defineStore('bebidas', () => {
     //* Data
+    const modal = useModalStore();
     const categorias = ref({});
     const busqueda = reactive({
         nombre: '',
         categoria: ''
     })
     const recetas = ref({});
+    const receta = ref({});
 
     //* First petition
     onMounted(async function () {
@@ -29,7 +32,8 @@ export const useBebidasStore = defineStore('bebidas', () => {
     //* Show drink
     async function seleccionarBebida(id) {
         const { data: { drinks } } = await APIService.buscarReceta(id);
-        console.log(drinks[0]);
+        receta.value = drinks[0];
+        modal.handleClicModal();
     }
 
     return {
@@ -37,6 +41,7 @@ export const useBebidasStore = defineStore('bebidas', () => {
         busqueda,
         obtenerRecetas,
         recetas,
-        seleccionarBebida
+        seleccionarBebida,
+        receta
     }
 });
