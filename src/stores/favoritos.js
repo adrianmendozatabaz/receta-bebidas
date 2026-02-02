@@ -1,10 +1,12 @@
 import { defineStore } from "pinia";
 import { useBebidasStore } from "./bebidas";
 import { ref, watch, onMounted } from "vue";
+import { useModalStore } from "./modal";
 
 export const useFavoritosStore = defineStore('favoritos', () => {
 
     const bebidas = useBebidasStore();
+    const modal = useModalStore();
     const favoritos = ref([]);
 
     onMounted(() => {
@@ -40,6 +42,7 @@ export const useFavoritosStore = defineStore('favoritos', () => {
         } else {
             agregarFavorito();
         }
+        modal.modal = false;
     }
 
     return {
