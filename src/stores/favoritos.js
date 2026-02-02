@@ -26,11 +26,19 @@ export const useFavoritosStore = defineStore('favoritos', () => {
         return favoritosLocalStorage.some(favorito => favorito.idDrink === id);
     }
 
+    function eliminarFavorito() {
+        favoritos.value = favoritos.value.filter(favorito => favorito.idDrink !== bebidas.receta.idDrink);
+    }
+
+    function agregarFavorito() {
+        favoritos.value.push(bebidas.receta);
+    }
+
     function handleClicFavoritos() {
         if (existeFavorito(bebidas.receta.idDrink)) {
-            console.log('dd');
+            eliminarFavorito();
         } else {
-            favoritos.value.push(bebidas.receta);
+            agregarFavorito();
         }
     }
 
