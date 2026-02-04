@@ -1,4 +1,4 @@
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { defineStore } from "pinia";
 
 export const useNotificacionStore = defineStore("notificacion", () => {
@@ -6,17 +6,20 @@ export const useNotificacionStore = defineStore("notificacion", () => {
     const texto = ref('');
     const error = ref(false);
 
-    function $reset() {
-        mostrar.value = false;
-        texto.value = '';
-        error.value = false;
-    }
+    watch(mostrar, () => {
+        if (mostrar.value) {
+            setTimeout(() => {
+                mostrar.value = false;
+                texto.value = '';
+                error.value = false;
+            }, 3000);
+        }
+    })
 
     return {
         mostrar,
         texto,
-        error,
-        $reset
+        error
     }
 
 });
