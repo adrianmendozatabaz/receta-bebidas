@@ -38,6 +38,10 @@ export const useFavoritosStore = defineStore('favoritos', () => {
         favoritos.value.push(bebidas.receta);
         notificacion.mostrar = true;
         notificacion.texto = '¡Agregado a favoritos!';
+
+        setTimeout(() => {
+            notificacion.$reset();
+        }, 3000);
     }
 
     function handleClicFavoritos() {
