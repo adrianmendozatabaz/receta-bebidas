@@ -6,10 +6,17 @@ export const useNotificacionStore = defineStore("notificacion", () => {
     const texto = ref('');
     const error = ref(false);
 
+    function $reset() {
+        mostrar.value = false;
+        texto.value = '';
+        error.value = false;
+    }
+
     return {
         mostrar,
         texto,
-        error
+        error,
+        $reset
     }
 
 });
