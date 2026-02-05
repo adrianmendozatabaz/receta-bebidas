@@ -2,13 +2,24 @@
 import { computed } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 import { useBebidasStore } from '@/stores/bebidas';
+import { useNotificacionStore } from '@/stores/notificacion';
 
 const route = useRoute();
 const store = useBebidasStore();
+const notificacion = useNotificacionStore();
 
 const paginaInicio = computed(() => route.name === 'inicio');
 
 const handleSubmit = () => {
+    if (Object.values(store.busqueda).includes('')) {
+        notificacion.$patch({
+            texto: 'Todos los campos son obligatorios',
+            mostrar: true,
+            error: true
+        });
+
+        return;
+    }
     store.obtenerRecetas();
 }
 </script>
