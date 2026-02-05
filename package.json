@@ -16,6 +16,7 @@
     "@openrouter/ai-sdk-provider": "^2.1.1",
     "@tailwindcss/vite": "^4.1.18",
     "axios": "^1.13.4",
+    "ia": "^0.0.1-beta",
     "pinia": "^3.0.4",
     "tailwindcss": "^4.1.18",
     "vue": "^3.5.26",
