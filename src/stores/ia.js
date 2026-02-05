@@ -1,3 +1,4 @@
+import IAService from "@/services/IAService";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
@@ -6,8 +7,7 @@ export const useIAStore = defineStore("ia", () => {
     const result = ref('');
 
     async function generarReceta() {
-        console.log('algo paso');
-
+        await IAService.generarReceta(prompt.value);
     }
 
     return {
