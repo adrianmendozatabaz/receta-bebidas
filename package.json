@@ -13,6 +13,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@heroicons/vue": "^2.2.0",
+    "@openrouter/ai-sdk-provider": "^2.1.1",
     "@tailwindcss/vite": "^4.1.18",
     "axios": "^1.13.4",
     "pinia": "^3.0.4",
