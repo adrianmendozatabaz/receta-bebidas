@@ -1,14 +1,28 @@
 <script setup>
 import { useIAStore } from '@/stores/ia';
+import { useNotificacionStore } from '@/stores/notificacion';
 
 const store = useIAStore();
+const notificacion = useNotificacionStore();
+
+const handledSubmit = () => {
+    if (store.prompt.trim() === '') {
+        notificacion.$patch({
+            mensaje: 'La búsqueda no puede ir vacía.',
+            mostrar: true,
+            error: true,
+        });
+        return;
+    }
+    store.generarReceta();
+}
 </script>
 
 <template>
     <h1 class="text-6xl font-extrabold">Generar Receta con IA</h1>
 
     <div class="max-w-4xl mx-auto">
-        <form class='flex flex-col space-y-3 py-10'>
+        <form class='flex flex-col space-y-3 py-10' @submit.prevent="handledSubmit">
             <div class="relative">
                 <input name="prompt" id="prompt" v-model="store.prompt"
                     class="border bg-white p-4 rounded-lg w-full border-slate-800"
