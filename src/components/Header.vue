@@ -39,6 +39,9 @@ const handleSubmit = () => {
                     <RouterLink :to="{ name: 'favoritos' }" class="text-white uppercase font-bold"
                         active-class="text-orange-500">Favoritos
                     </RouterLink>
+                    <RouterLink :to="{ name: 'ia' }" class="text-white uppercase font-bold"
+                        active-class="text-orange-500">Generar receta con IA
+                    </RouterLink>
                 </nav>
             </div>
 
