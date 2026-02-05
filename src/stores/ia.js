@@ -5,8 +5,14 @@ export const useIAStore = defineStore("ia", () => {
     const prompt = ref('');
     const result = ref('');
 
+    async function generarReceta() {
+        console.log('algo paso');
+
+    }
+
     return {
         prompt,
-        result
+        result,
+        generarReceta
     }
 })
