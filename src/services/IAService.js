@@ -7,7 +7,9 @@ export default {
             // model: openRouter('meta-llama/llama-3.3-70b-instruct:free'),
             // model: openRouter('stepfun/step-3.5-flash:free'),
             model: openRouter('nvidia/nemotron-3-nano-30b-a3b:free'),
-            prompt
+            prompt,
+            system: 'Eres una bartender aprendiz y necesitas lo mas top en bebidas',
+            temperature: 1
         });
         return result.textStream;
     }
