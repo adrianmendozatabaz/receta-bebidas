@@ -28,7 +28,8 @@ const handledSubmit = () => {
                     class="border bg-white p-4 rounded-lg w-full border-slate-800"
                     placeholder="Genera una receta con ingredientes. Ej. Bebida con Tequila y Fresa" />
                 <button type="submit" aria-label="Enviar"
-                    class="  cursor-pointer absolute top-1/2 right-5 transform -translate-x-1/2 -translate-y-1/2">
+                    class="  cursor-pointer absolute top-1/2 right-5 transform -translate-x-1/2 -translate-y-1/2"
+                    :class="{ 'cursor-not-allowed opacity-50': store.cargando }" :disabled="store.cargando">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
                         stroke="currentColor" class="w-10 h-10">
                         <path strokeLinecap="round" strokeLinejoin="round"
@@ -38,6 +39,7 @@ const handledSubmit = () => {
             </div>
         </form>
 
+        <p v-if="store.cargando" class="text-center animate-blink">Generando respuesta...</p>
         <div class="py-10 whitespace-pre-wrap">
             {{ store.result }}
         </div>
