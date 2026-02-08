@@ -32,6 +32,23 @@ Proyecto de aprendizaje desarrollado con **Vue 3 + Vite**, enfocado en la constr
 
 ---
 
+## 🍸 Consumo de API externa
+
+Este proyecto realiza peticiones HTTP a la API pública de **TheCocktailDB** para obtener información relacionada con bebidas y cócteles.
+
+🔗 API oficial: https://www.thecocktaildb.com/api.php
+
+Es **recomendable leer la documentación oficial** para comprender:
+- Los endpoints disponibles
+- Los parámetros de búsqueda
+- El formato de las respuestas
+- Las limitaciones de uso
+
+El consumo de la API se realiza mediante **Axios**, siguiendo un enfoque orientado a buenas prácticas y separación de responsabilidades.
+
+> 📌 La correcta comprensión de la documentación es clave para extender o modificar las peticiones según las necesidades del proyecto.
+
+
 ## 🤖 Integración con IA (OpenRouter)
 
 Este proyecto utiliza **OpenRouter** para funcionalidades relacionadas con IA.
@@ -44,4 +61,4 @@ Debes crear tu propia **API Key** en OpenRouter:
 Luego agregarla en tu entorno (`.env`):
 
 ```env
-VITE_OPENROUTER_API_KEY=tu_api_key_aqui
+VITE_OPENROUTER_API_KEY=tu_api_key
