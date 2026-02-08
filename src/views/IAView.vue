@@ -39,7 +39,7 @@ const handledSubmit = () => {
         </form>
 
         <div class="py-10 whitespace-pre-wrap">
-
+            {{ store.result }}
         </div>
     </div>
 </template>
