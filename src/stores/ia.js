@@ -7,10 +7,11 @@ export const useIAStore = defineStore("ia", () => {
     const result = ref('');
 
     async function generarReceta() {
+        result.value = '';
         const resultado = await IAService.generarReceta(prompt.value);
 
         for await (const text of resultado) {
-            console.log(text);
+            result.value += text;
         }
     }
 
